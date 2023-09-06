@@ -1,17 +1,18 @@
 import useTitle from '../../../Utils/useTitle';
+import Orders from '../../SharedArea/Orders/Orders';
 import './ContactUs.css';
 
 function ContactUs(): JSX.Element {
-  useTitle('Contact Us');
+    useTitle('Contact Us');
 
-  return (
-    <div className='ContactUs'>
-      <div>
-        <span>feel free to contact us:</span>
-        <span>contact.us@gmail.com 📧</span>
-      </div>
-    </div>
-  );
+    return (
+        <div className='ContactUs'>
+            <div>
+                <span>feel free to contact us:</span>
+                <span>contact.us@gmail.com 📧</span>
+            </div>
+        </div>
+    );
 }
 
 export default ContactUs;

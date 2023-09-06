@@ -1,6 +1,7 @@
+import { FC } from 'react';
 import './BackgroundByHour.css';
 
-function BackgroundByHour(): JSX.Element {
+function BackgroundByHour(InnerComponent: FC): FC {
     const getColorByHour = () => {
         let hour = new Date().getHours();
         hour > 12 && (hour = 24 - hour);
@@ -8,7 +9,18 @@ function BackgroundByHour(): JSX.Element {
         return `rgb(${hue},${hue},${hue})`;
     };
 
-    return <div className='BackgroundByHour'></div>;
+    const style = {
+        backgroundColor: getColorByHour(),
+        display: 'inline-block',
+    };
+
+    return function (props: any) {
+        return (
+            <div className='BackgroundByHour' style={style}>
+                <InnerComponent {...props} />
+            </div>
+        );
+    };
 }
 
 export default BackgroundByHour;

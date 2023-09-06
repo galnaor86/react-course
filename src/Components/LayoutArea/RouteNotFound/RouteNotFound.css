@@ -1,0 +1,13 @@
+.RouteNotFound > div {
+  width: 100%;
+  padding-top: 30px;
+  font-size: 200px;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bold;
+  color: darkslategray;
+}
+
+.RouteNotFound > p {
+  font-family: 'Courier New', Courier, monospace;
+  color: #a5d5d5;
+}

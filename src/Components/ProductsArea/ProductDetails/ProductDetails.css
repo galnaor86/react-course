@@ -1,0 +1,9 @@
+.ProductDetails {
+  height: 100%;
+  padding: 100px;
+}
+
+.ProductDetails > img {
+  padding: 30px;
+  border-radius: 300px;
+}

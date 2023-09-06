@@ -1,0 +1,16 @@
+.ContactUs {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.ContactUs > div {
+  display: flex;
+  flex-direction: column;
+  padding: 32px;
+  background-color: darkslategray;
+  height: fit-content;
+  border-radius: 20px;
+  margin-top: 100px;
+  box-shadow: #40474682 5px 5px 10px;
+}

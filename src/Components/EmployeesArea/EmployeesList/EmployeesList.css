@@ -1,0 +1,6 @@
+.EmployeesList {
+  padding: 40px 100px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}

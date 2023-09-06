@@ -1,0 +1,8 @@
+.WhoAreWe {
+    margin-top: 40px;
+}
+
+.WhoAreWe > p {
+    margin: 0;
+    color: darkslategray;
+}

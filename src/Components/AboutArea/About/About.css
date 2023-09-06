@@ -1,0 +1,30 @@
+.About {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.About > div {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+}
+
+.CodeButton {
+  margin: 20px;
+  background-color: azure;
+  color: #426e6e;
+  border-radius: 20px;
+  padding: 20px;
+  transition: all 0.5s;
+  font-weight: bold;
+  font-size: 16px;
+  border: none;
+  box-shadow: #40474682 5px 5px 10px;
+}
+
+.CodeButton:hover {
+  background-color: #426e6e;
+  color: azure;
+  cursor: pointer;
+}

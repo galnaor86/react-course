@@ -1,0 +1,27 @@
+.ProductsList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #5f9ea0ac;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgba(71, 118, 118, 0.805);
+  border-radius: 20px;
+  transition: all 1s;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(118, 174, 174, 0.805);
+}

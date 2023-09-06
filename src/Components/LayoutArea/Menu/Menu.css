@@ -1,0 +1,16 @@
+.Menu {
+  padding-top: 30px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.Menu > a {
+  font-size: 20px;
+  color: azure;
+}
+
+.Menu > .active {
+  color: #a0d4ce;
+}

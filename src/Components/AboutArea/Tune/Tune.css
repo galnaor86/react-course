@@ -1,0 +1,20 @@
+.Tune {
+  display: flex;
+  flex-direction: row !important;
+  gap: 5px;
+  position: absolute;
+  bottom: 70px;
+}
+
+.Tune > button {
+  border: none;
+  background: none;
+  border-radius: 50px;
+  transition: 0.5s all;
+  height: 35px;
+  width: 35px;
+}
+
+.Tune > button:hover {
+  background-color: rgba(240, 255, 255, 0.12);
+}

@@ -1,36 +1,62 @@
 import axios from "axios";
 import Product from "../Models/Product";
 import appConfig from "../Utils/AppConfig";
+import { appStore } from "../Redux/AppState";
+import { productActions } from "../Redux/ProductsSlice";
 
 class ProductsService {
     public async getAllProducts(): Promise<Product[]> {
-        const response = await axios.get<Product[]>(appConfig.productsUrl);
+        let products = appStore.getState().products; // one time value
+        if (products.length === 0) {
+            products = (await axios.get<Product[]>(appConfig.productsUrl)).data;
+            appStore.dispatch(productActions.setAll(products));
+        };
 
-        return response.data;
+        return products;
     }
 
     public async getProductById(id: number): Promise<Product> {
-        const response = await axios.get<Product>(`${appConfig.productsUrl}/${id}`);
+        let product: Product = appStore.getState().products.find((product) => product.id === id);
+        if (!product) {
+            product = (await axios.get<Product>(`${appConfig.productsUrl}/${id}`)).data;
+        }
 
-        return response.data;
+        return product;
     }
 
     public async addProduct(product: Product): Promise<void> {
-        const options = {
-            headers: { 'content-Type': 'multipart/form-data' }
-        };
-        await axios.post<Product>(appConfig.productsUrl, product, options);
+        const options = { headers: { "content-Type": "multipart/form-data" } };
+        appStore.dispatch(
+            productActions.addOne(
+                (
+                    await axios.post<Product>(
+                        appConfig.productsUrl,
+                        product,
+                        options
+                    )
+                ).data
+            )
+        );
     }
 
     public async deleteProduct(id: number): Promise<void> {
         await axios.delete(`${appConfig.productsUrl}/${id}`)
+        appStore.dispatch(productActions.deleteOne(id));
     }
 
     public async updateProduct(product: Product): Promise<void> {
-        const options = {
-            headers: { 'content-Type': 'multipart/form-data' }
-        };
-        await axios.put<Product>(appConfig.productsUrl, product, options);
+        const options = { headers: { "content-Type": "multipart/form-data" } };
+        appStore.dispatch(
+            productActions.updateOne(
+                (
+                    await axios.put<Product>(
+                        `${appConfig.productsUrl}/${product.id}`,
+                        product,
+                        options
+                    )
+                ).data
+            )
+        );
     }
 }
 

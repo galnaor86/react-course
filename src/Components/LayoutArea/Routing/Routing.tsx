@@ -9,6 +9,8 @@ import RouteNotFound from '../RouteNotFound/RouteNotFound';
 import './Routing.css';
 import { Suspense, lazy } from 'react';
 import Spinner from '../../SharedArea/Spinner/Spinner';
+import AddProduct from '../../ProductsArea/AddProduct/AddProduct';
+import EditProduct from '../../ProductsArea/EditProduct/EditProduct';
 
 // const LazyAbout = lazy(() => import('../../AboutArea/About/About'));
 
@@ -17,7 +19,7 @@ function Routing(): JSX.Element {
         return new Promise<void>((resolve) => {
             setTimeout(() => {
                 resolve();
-            }, 1000000);
+            }, 1000);
         });
     };
 
@@ -31,6 +33,11 @@ function Routing(): JSX.Element {
             <Routes>
                 <Route path='/home' element={<Home />}></Route>
                 <Route path='/products' element={<ProductsList />}></Route>
+                <Route path='/products/new' element={<AddProduct />}></Route>
+                <Route
+                    path='/products/edit/:id'
+                    element={<EditProduct />}
+                ></Route>
                 <Route
                     path='/products/details/:id'
                     element={<ProductDetails />}

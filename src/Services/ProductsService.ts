@@ -14,6 +14,24 @@ class ProductsService {
 
         return response.data;
     }
+
+    public async addProduct(product: Product): Promise<void> {
+        const options = {
+            headers: { 'content-Type': 'multipart/form-data' }
+        };
+        await axios.post<Product>(appConfig.productsUrl, product, options);
+    }
+
+    public async deleteProduct(id: number): Promise<void> {
+        await axios.delete(`${appConfig.productsUrl}/${id}`)
+    }
+
+    public async updateProduct(product: Product): Promise<void> {
+        const options = {
+            headers: { 'content-Type': 'multipart/form-data' }
+        };
+        await axios.put<Product>(appConfig.productsUrl, product, options);
+    }
 }
 
 const productsService = new ProductsService();

@@ -1,0 +1,62 @@
+.Login {
+    display: flex;
+    height: 100%;
+    justify-content: center;
+}
+
+.Login > form {
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+    padding: 50px;
+    gap: 20px;
+}
+
+.Login > form > div {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.Login > form > div > input {
+    color: white;
+    height: 30px;
+    width: 250px;
+    background: none;
+    border: none;
+    box-shadow: #40474682 0px 0px 5px 0px;
+    border-radius: 50px;
+}
+
+.Login > form > div > input:focus {
+    outline: none;
+}
+
+.Login > form > button {
+    width: 80px;
+    align-self: center;
+    padding: 10px;
+    margin: 20px;
+    background-color: azure;
+    color: #426e6e;
+    border-radius: 20px;
+    padding: 20px;
+    transition: all 0.5s;
+    font-weight: bold;
+    font-size: 16px;
+    border: none;
+    box-shadow: #40474682 5px 5px 10px;
+}
+
+.Login > form > button:hover {
+    background-color: #426e6e;
+    color: azure;
+    cursor: pointer;
+}
+
+.Error {
+    color: red;
+    position: absolute;
+    right: 0;
+    margin-right: 530px;
+}

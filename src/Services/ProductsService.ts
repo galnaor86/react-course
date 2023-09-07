@@ -1,8 +1,8 @@
 import axios from "axios";
 import Product from "../Models/Product";
-import appConfig from "../Utils/AppConfig";
 import { appStore } from "../Redux/AppState";
 import { productActions } from "../Redux/ProductsSlice";
+import appConfig from "../Utils/AppConfig";
 
 class ProductsService {
     public async getAllProducts(): Promise<Product[]> {
@@ -57,6 +57,18 @@ class ProductsService {
                 ).data
             )
         );
+    }
+
+    public async getTopProducts(): Promise<Product[]> {
+        const products = (await axios.get<Product[]>(appConfig.topProductsUrl)).data;
+
+        return products;
+    }
+
+    public async getOutOfStockProducts(): Promise<Product[]> {
+        const products = (await axios.get<Product[]>(appConfig.outOfStockProductsUrl)).data;
+
+        return products;
     }
 }
 

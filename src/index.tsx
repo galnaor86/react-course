@@ -1,10 +1,13 @@
 import ReactDOM from 'react-dom/client';
+import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import Layout from './Components/LayoutArea/Layout/Layout';
+import { appStore } from './Redux/AppState';
+import interceptors from './Utils/Interceptors';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import { Provider } from 'react-redux';
-import { appStore } from './Redux/AppState';
+
+interceptors.create();
 
 const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement

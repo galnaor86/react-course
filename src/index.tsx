@@ -3,6 +3,7 @@ import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import Layout from './Components/LayoutArea/Layout/Layout';
 import { appStore } from './Redux/AppState';
+import { ThemeContext, appTheme } from './Utils/Context';
 import interceptors from './Utils/Interceptors';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
@@ -15,7 +16,9 @@ const root = ReactDOM.createRoot(
 root.render(
     <BrowserRouter>
         <Provider store={appStore}>
-            <Layout />
+            <ThemeContext.Provider value={appTheme}>
+                <Layout />
+            </ThemeContext.Provider>
         </Provider>
     </BrowserRouter>
 );

@@ -5,6 +5,7 @@ import { AppState } from '../../../Redux/AppState';
 import productsService from '../../../Services/ProductsService';
 import ProductCard from '../ProductCard/ProductCard';
 import './OutOfStockProducts.css';
+import notification from '../../../Utils/Notification';
 
 function OutOfStockProducts(): JSX.Element {
     const [products, setProducts] = useState<Product[]>([]);
@@ -18,7 +19,7 @@ function OutOfStockProducts(): JSX.Element {
                 .then((products) => {
                     setProducts(products);
                 })
-                .catch((err) => alert(err.message));
+                .catch((err) => notification.error(err));
     }, []);
 
     return (

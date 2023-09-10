@@ -4,6 +4,7 @@ import Product from '../../../Models/Product';
 import productsService from '../../../Services/ProductsService';
 import './ProductDetails.css';
 import { NavLink } from 'react-router-dom';
+import notification from '../../../Utils/Notification';
 
 function ProductDetails(): JSX.Element {
     const params = useParams<{ id: string }>();
@@ -15,7 +16,7 @@ function ProductDetails(): JSX.Element {
         productsService
             .getProductById(id)
             .then((product) => setProduct(product))
-            .catch((err) => alert(err.message));
+            .catch((err) => notification.error(err));
     }, []);
 
     const onDeleteCLick = async () => {
@@ -26,10 +27,10 @@ function ProductDetails(): JSX.Element {
             }
 
             await productsService.deleteProduct(product.id);
-            alert('product deleted');
+            notification.success('product deleted');
             navigate('/products');
         } catch (err: any) {
-            alert(err.message);
+            notification.error(err);
         }
     };
 

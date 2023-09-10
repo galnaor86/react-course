@@ -4,6 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import ProductModel from '../../../Models/Product';
 import ProductsService from '../../../Services/ProductsService';
 import './EditProduct.css';
+import notification from '../../../Utils/Notification';
 
 function EditProduct(): JSX.Element {
     const { register, handleSubmit, formState, setValue } =
@@ -21,7 +22,7 @@ function EditProduct(): JSX.Element {
                 setValue('price', product.price);
                 setValue('stock', product.stock);
             })
-            .catch((err) => alert(err.stack));
+            .catch((err) => notification.error(err));
     }, []);
 
     async function editProduct(product: ProductModel): Promise<void> {
@@ -31,7 +32,7 @@ function EditProduct(): JSX.Element {
             await ProductsService.updateProduct(product);
             navigate('/products');
         } catch (err: any) {
-            alert(err.stack);
+            notification.error(err);
         }
     }
 

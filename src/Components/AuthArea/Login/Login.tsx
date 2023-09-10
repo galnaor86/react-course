@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import Credentials from '../../../Models/Credentials';
 import authService from '../../../Services/AuthService';
 import './Login.css';
+import notification from '../../../Utils/Notification';
 
 function Login(): JSX.Element {
     const { register, handleSubmit, formState } = useForm<Credentials>();
@@ -11,10 +12,10 @@ function Login(): JSX.Element {
     const onFormSubmit = async (credentials: Credentials) => {
         try {
             await authService.login(credentials);
-            alert('Welcome back!');
+            notification.success('Welcome back!');
             navigate('/home');
         } catch (err: any) {
-            alert(err.message);
+            notification.error(err);
         }
     };
 

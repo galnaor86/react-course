@@ -3,6 +3,7 @@ import './TopProducts.css';
 import productsService from '../../../Services/ProductsService';
 import Product from '../../../Models/Product';
 import ProductCard from '../ProductCard/ProductCard';
+import notification from '../../../Utils/Notification';
 
 function TopProducts(): JSX.Element {
     const [products, setProducts] = useState<Product[]>([]);
@@ -13,7 +14,7 @@ function TopProducts(): JSX.Element {
             .then((products) => {
                 setProducts(products);
             })
-            .catch((err) => alert(err.message));
+            .catch((err) => notification.error(err));
     }, []);
 
     return (

@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import Product from '../../../Models/Product';
 import productsService from '../../../Services/ProductsService';
 import './AddProduct.css';
+import notification from '../../../Utils/Notification';
 
 function AddProduct(): JSX.Element {
     const {
@@ -16,10 +17,10 @@ function AddProduct(): JSX.Element {
         try {
             product.image = (product.image as unknown as FileList)[0];
             await productsService.addProduct(product);
-            alert('Product added');
+            notification.success('Product added');
             navigate('/products');
         } catch (err: any) {
-            alert(err.message);
+            notification.error(err.message);
         }
     };
 
